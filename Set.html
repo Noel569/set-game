@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inline
+        {
+          display: inline;
+        }
+        .startButton
+        {
+            margin-top: 40px;
+            font-size: 30px;
+        }
+        li input
+        {
+            text-align: center;
+        }
+        .card
+        {
+            background-color: black;
+            height: 200px;
+            width: 140px;
+        }
+        .game-container
+        {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            grid-gap: 10px;
+            margin: 50px;
+            justify-content: center;
+        }
+        .selected
+        {
+            border: 3px solid rgb(96, 231, 96);
+        }
+        .highlighted
+        {
+            border: 3px solid rgb(71, 185, 238)
+        }
+        .timer
+        {
+            font-size: 40px;
+            color: rgb(214, 58, 58);
+        }
+        .inactive
+        {
+            border: 3px solid rgb(255, 53, 53)
+        }
+      </style>
+</head>
+<body>
+    <div id="menu" style="text-align: center;">
+        <h1>SET</h1>
+        <div>
+            <br>
+            <input type="number" id="numberOfPlayers" value="1">
+            <button type="button" id="generate">Generate Players</button>
+        </div>
+        <div>
+            <ul id="playerList" class="inline"></ul>
+        </div>
+        <div>
+            <br>
+            <button type="button" id="rules">Rules</button>
+            <div id="ruletext" style="display: none;">
+                <p>A játék célja hogy 3 kártyából álló SET-eket találjunk meg az asztalra lehelyezett 12 kártyából. Minden kártyának 4 tulajdonsága van, amik a következők:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>FORMA: </b>ovális, hullámos, rombusz</li>
+                    <li><b>SZÍN: </b>piros, zöld, lila</li>
+                    <li><b>SZÁM: </b>1, 2 vagy 3 forma</li>
+                    <li><b>TARTALOM: </b>tömör, csíkos, üres</li>
+                </ul>
+                <p>Egy SET 3 kártyából áll, amiben minden jellemzőt külön megvizsgálva, azoknak</p>
+                <ul style="list-style-type: none;">
+                    <li>vagy minden kártyán azonosnak,</li>
+                    <li>vagy minden kártyán különbözőnek kell lennie.</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h2>Game mode:</h2>
+            <button type="button" id="practice">Practice</button>
+            <button type="button" id="ranked">Ranked</button>
+        </div>
+        <div id="options" style="display: none;">
+            <h3>Options:</h3>
+            <label for="1">Enable Hints:</label>
+            <select name="hint" id="hint">
+                <option value="y">Yes</option>
+                <option value="n">No</option>
+            </select>
+            <label for="2">Enable Help:</label>
+            <select name="help" id="help">
+                <option value="y">Yes</option>
+                <option value="n">No</option>
+            </select>
+            <label for="3">Draw Automaticly:</label>
+            <select name="autoDraw" id="autoDraw">
+                <option value="y">Yes</option>
+                <option value="n">No</option>
+            </select>
+        </div>
+        <div>
+            <button class="startButton" type="button" id="startButton">START</button>
+        </div>
+        
+    </div>
+
+    <div id="game" style="display: none; text-align: center;">
+        <div id="buttons"></div>
+        <div id="playerButtons"></div>
+        <br>
+        <div id="cardsInTheDeck"></div>
+        <br>
+        <div class="timer" id="timer"></div>
+        <div id="cards" class="game-container"></div>
+    </div>
+
+    <div id="gameOver" style="display: none; text-align: center;">
+        <h1>GAME OVER</h1>
+        <div>
+            <ul id="rankList" style="list-style-type: none;"></ul>
+        </div>
+        <button class="startButton" id="restartButton">New Game</button>
+    </div>
+
+    <script src="Set.js"></script>
+</body>
+</html>
